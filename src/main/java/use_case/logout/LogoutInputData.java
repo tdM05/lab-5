@@ -11,7 +11,7 @@ public class LogoutInputData {
     }
 
     // Finished
-    String getUsername(){
+    String getUsername() {
         return username;
     }
 
