@@ -4,8 +4,8 @@ package use_case.logout;
  * The Logout Interactor.
  */
 public class LogoutInteractor implements LogoutInputBoundary {
-    private LogoutUserDataAccessInterface userDataAccessObject;
-    private LogoutOutputBoundary logoutPresenter;
+    private final LogoutUserDataAccessInterface userDataAccessObject;
+    private final LogoutOutputBoundary logoutPresenter;
 
     public LogoutInteractor(LogoutUserDataAccessInterface userDataAccessInterface,
                             LogoutOutputBoundary logoutOutputBoundary) {
@@ -15,9 +15,9 @@ public class LogoutInteractor implements LogoutInputBoundary {
 
     @Override
     public void execute(LogoutInputData logoutInputData) {
-        // * set the username to null in the DAO
+        // * get the username out of the input data,
         final String username = logoutInputData.getUsername();
-
+        // * set the username to null in the DAO
         userDataAccessObject.setCurrentUsername(null);
         // * instantiate the `LogoutOutputData`, which needs to contain the username.
         final LogoutOutputData logoutOutputData = new LogoutOutputData(username, false);
